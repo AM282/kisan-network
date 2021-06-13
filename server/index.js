@@ -6,6 +6,7 @@ const {getContacts,getContactById}=require('./resources/contactInformation');
 const {getMessages,saveMessages}=require('./resources/messageInformation');
 const app = express();
 
+const port=process.env.PORT||3030;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -58,6 +59,6 @@ app.get('/messages',(req,res,next)=>{
       });
     res.send(messageList);
 })
-http.createServer(app).listen(3030, () => {
-    console.log('Express server listening on port 3030');
+http.createServer(app).listen(port, () => {
+    console.log(`Express server listening on port ${port}`);
 });
